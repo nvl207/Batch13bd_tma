@@ -1,0 +1,32 @@
+package com.manager.model;
+
+public class roomModel {
+	private int id_room;
+	private String name_room;
+	private int id_apartment;
+	private int id_customer;
+	
+	
+	public int getMaPhong() {
+		return MaPhong;
+	}
+	public void setMaPhong(int maPhong) {
+		MaPhong = maPhong;
+	}
+	public String getTenPhong() {
+		return TenPhong;
+	}
+	public void setTenPhong(String tenPhong) {
+		TenPhong = tenPhong;
+	}
+	public int getMaToaNha() {
+		return MaToaNha;
+	}
+	public void setMaToaNha(int maToaNha) {
+		MaToaNha = maToaNha;
+	}
+
+	
+	
+	
+}

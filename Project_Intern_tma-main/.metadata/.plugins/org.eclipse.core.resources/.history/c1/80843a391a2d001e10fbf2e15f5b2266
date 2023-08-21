@@ -1,0 +1,38 @@
+package com.manager.model;
+
+public class customerModel {
+
+	private int MaKhachHang;
+	private String TenKhachHang;
+	private String SoDienThoai;
+	private String DiaChiEmail;
+	
+	
+	
+	public int getMaKhachHang() {
+		return MaKhachHang;
+	}
+	public void setMaKhachHang(int maKhachHang) {
+		MaKhachHang = maKhachHang;
+	}
+	public String getTenKhachHang() {
+		return TenKhachHang;
+	}
+	public void setTenKhachHang(String tenKhachHang) {
+		TenKhachHang = tenKhachHang;
+	}
+	public String getSoDienThoai() {
+		return SoDienThoai;
+	}
+	public void setSoDienThoai(String soDienThoai) {
+		SoDienThoai = soDienThoai;
+	}
+	public String getDiaChiEmail() {
+		return DiaChiEmail;
+	}
+	public void setDiaChiEmail(String diaChiEmail) {
+		DiaChiEmail = diaChiEmail;
+	}
+	
+	
+}

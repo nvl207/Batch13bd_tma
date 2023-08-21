@@ -1,0 +1,15 @@
+package com.manager.service.impl;
+
+import com.manager.service.IKhachHangService;
+
+import java.util.List;
+
+import com.manager.model.KhachHangModel;
+import com.manager.service.IKhachHangService;
+
+public class KhachHangService implements IKhachHangService {
+	@Override
+	public List<KhachHangModel> findAll() {
+		return null;
+	}
+}

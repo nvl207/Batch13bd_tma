@@ -1,0 +1,16 @@
+package com.manager.dao.impl;
+
+import java.util.List;
+
+import com.manager.dao.IKhachHangDAO;
+import com.manager.model.KhachHangModel;
+
+
+public class KhachHangDAO implements IKhachHangDAO {
+
+	@Override
+	public List<KhachHangModel> findAll() {
+		return null;
+	}
+	
+}

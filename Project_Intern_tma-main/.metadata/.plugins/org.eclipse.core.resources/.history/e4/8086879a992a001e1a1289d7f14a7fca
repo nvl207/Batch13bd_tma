@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h2>Danh Sách Thông Tin</h2>
+    <input type="text" class="form-control" id="searchInput" placeholder="Tìm kiếm theo tên" onkeyup="searchData()">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Tên</th>
+          <th>Số điện thoại</th>
+          <th>Email</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody id="dataBody">
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    // Hàm lấy query parameters từ URL
+    function getQueryParams() {
+      var search = window.location.search.substring(1);
+      var params = search.split("&");
+      var queryParams = {};
+      for (var i = 0; i < params.length; i++) {
+        var param = params[i].split("=");
+        var key = decodeURIComponent(param[0]);
+        var value = decodeURIComponent(param[1]);
+        queryParams[key] = value;
+      }
+      return queryParams;
+    }
+
+    // Lấy query parameters từ URL và hiển thị dữ liệu
+    var queryParams = getQueryParams();
+    if (queryParams.name && queryParams.phone && queryParams.email) {
+      var name = queryParams.name;
+      var phone = queryParams.phone;
+      var email = queryParams.email;
+
+      var data = [{ name: name, phone: phone, email: email }];
+      showData(data);
+    }
+
+    function showData(data) {
+      var tableBody = document.getElementById("dataBody");
+      tableBody.innerHTML = "";
+
+      for (var i = 0; i < data.length; i++) {
+        var row = tableBody.insertRow();
+        row.insertCell().textContent = data[i].name;
+        row.insertCell().textContent = data[i].phone;
+        row.insertCell().textContent = data[i].email;
+        row.insertCell().innerHTML = '<button type="button" class="btn btn-sm btn-primary" onclick="editData(' + i + ')">Sửa</button> ' +
+                                     '<button type="button" class="btn btn-sm btn-danger" onclick="deleteData(' + i + ')">Xoá</button>';
+      }
+    }
+
+    function searchData() {
+      // ...
+    }
+
+    function editData(index) {
+      // ...
+    }
+
+    function deleteData(index) {
+      // ...
+    }
+  </script>
+</body>
+</html>

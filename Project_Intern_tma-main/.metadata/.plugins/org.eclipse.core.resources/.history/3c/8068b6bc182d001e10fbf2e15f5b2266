@@ -1,0 +1,22 @@
+package com.manager.service.impl;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
+import com.manager.dao.IcustomerDAO;
+import com.manager.model.customerModel;
+import com.manager.service.IKhachHangService;
+
+public class KhachHangService implements IKhachHangService {
+	
+
+	@Inject
+	private IcustomerDAO khachHangDAO;
+	
+	
+	@Override
+	public List<customerModel> findAll() {
+		return khachHangDAO.findAll();
+	}
+}

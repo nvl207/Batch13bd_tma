@@ -1,0 +1,10 @@
+package com.manager.model;
+
+public class apartmentModel {
+	private int id_apartment;
+	private String name_apartment;
+	private String add_apartment;
+	private int number_of_floor;
+
+	
+}

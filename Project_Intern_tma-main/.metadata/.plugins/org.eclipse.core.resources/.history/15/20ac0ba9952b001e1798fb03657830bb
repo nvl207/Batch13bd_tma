@@ -1,0 +1,40 @@
+package com.manager.dao.impl;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.manager.dao.IKhachHangDAO;
+import com.manager.model.KhachHangModel;
+
+public class KhachHangDAO implements IKhachHangDAO {
+	public Connection getConnection() {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			String url = "jdbc:mySQL://localhost:3306/CHECK_PROJECT";
+			String user = "root";
+			String password = "123456";
+			return DriverManager.getConnection(url, user, password);
+
+		} catch (ClassNotFoundException | SQLException e) {
+			return null;
+		}
+
+	}
+
+	@Override
+	public List<KhachHangModel> findAll() {
+		List<KhachHangModel> results = new ArrayList<>();
+		String sql = "select * from khachhang;";
+		//open connection
+		Connection connection = getConnection();
+		if (connection != null) {
+			
+		}
+		
+		return null;
+	}
+
+}

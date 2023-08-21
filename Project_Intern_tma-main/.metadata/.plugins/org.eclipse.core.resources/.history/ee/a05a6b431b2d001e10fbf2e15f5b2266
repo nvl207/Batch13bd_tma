@@ -1,0 +1,74 @@
+package com.manager.dao.impl;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.manager.dao.IcustomerDAO;
+import com.manager.model.customerModel;
+
+public class customerDAO implements IcustomerDAO {
+	public Connection getConnection() {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			String url = "jdbc:mySQL://localhost:3306/CHECK_PROJECT";
+			String user = "root";
+			String password = "123456";
+			return DriverManager.getConnection(url, user, password);
+
+		} catch (ClassNotFoundException | SQLException e) {
+			return null;
+		}
+
+	}
+
+	@Override
+	public List<customerModel> findAll() {
+		List<customerModel> results = new ArrayList<>();
+		String sql = "SELECT * FROM customer;";
+		//open connection
+		Connection connection = getConnection();
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		if (connection != null) {
+			try {
+				
+				statement = connection.prepareStatement(sql);
+				resultSet = statement.executeQuery();
+				
+				while (resultSet.next()) {
+					customerModel customer = new customerModel();
+					customer.setid_customer(resultSet.getInt("id_customer"));
+					customer.setTenKhachHang(resultSet.getString("TenKhachHang"));
+					customer.setSoDienThoai(resultSet.getString("SoDienThoai"));
+					customer.setDiaChiEmail(resultSet.getString("DiaChiEmail"));
+					
+					results.add(khachhang);	
+				}
+				return results;
+			} catch (SQLException e) {
+				return null;
+			} finally { // finally đảm bảo các kết nối luôn close
+				try {
+					if (connection != null) {
+						connection.close();
+					}
+					if (statement != null) {
+						statement.close();
+					}
+					if (resultSet != null) {
+						resultSet.close();
+					}
+				} catch (SQLException e) {
+					return null;
+				}
+				
+			}
+		}
+		return null;
+	}
+}

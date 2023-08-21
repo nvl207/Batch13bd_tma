@@ -1,0 +1,9 @@
+package com.manager.dao;
+
+import java.util.List;
+
+import com.manager.model.KhachHangModel;
+
+public interface IcustomerDAO {
+List<KhachHangModel> findAll();
+}

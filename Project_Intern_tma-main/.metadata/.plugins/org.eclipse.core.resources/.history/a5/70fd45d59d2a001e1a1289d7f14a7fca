@@ -1,0 +1,47 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h2>Form Nhập Thông Tin</h2>
+    <form id="myForm">
+      <div class="form-group">
+        <label for="inputName">Tên:</label>
+        <input type="text" class="form-control" id="inputName" placeholder="Nhập tên của bạn">
+      </div>
+      <div class="form-group">
+        <label for="inputPhone">Số điện thoại:</label>
+        <input type="tel" class="form-control" id="inputPhone" placeholder="Nhập số điện thoại của bạn">
+      </div>
+      <div class="form-group">
+        <label for="inputEmail">Email:</label>
+        <input type="email" class="form-control" id="inputEmail" placeholder="Nhập địa chỉ email của bạn">
+      </div>
+      <button type="button" class="btn btn-primary" onclick="addData()">Thêm</button>
+    </form>
+  </div>
+
+  <script>
+    var data = [];
+
+    function addData() {
+      var name = document.getElementById("inputName").value;
+      var phone = document.getElementById("inputPhone").value;
+      var email = document.getElementById("inputEmail").value;
+
+      data.push({ name: name, phone: phone, email: email });
+
+      // Chuyển đến trang management.html và truyền dữ liệu bằng query parameters
+      var queryParams = "?name=" + encodeURIComponent(name) + "&phone=" + encodeURIComponent(phone) + "&email=" + encodeURIComponent(email);
+      window.location.href = "list_guest.html" + queryParams;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+package com.manager.model;
+
+public class apartmentModel {
+	private int MaToaNha;
+	private String TenToaNha;
+	private String DiaChi;
+	private int SoTang;
+	public int getMaToaNha() {
+		return MaToaNha;
+	}
+	public void setMaToaNha(int maToaNha) {
+		MaToaNha = maToaNha;
+	}
+	public String getTenToaNha() {
+		return TenToaNha;
+	}
+	public void setTenToaNha(String tenToaNha) {
+		TenToaNha = tenToaNha;
+	}
+	public String getDiaChi() {
+		return DiaChi;
+	}
+	public void setDiaChi(String diaChi) {
+		DiaChi = diaChi;
+	}
+	public int getSoTang() {
+		return SoTang;
+	}
+	public void setSoTang(int soTang) {
+		SoTang = soTang;
+	}
+	
+	
+}

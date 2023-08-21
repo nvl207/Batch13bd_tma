@@ -1,0 +1,10 @@
+package com.manager.controller;
+
+import javax.servlet.http.HttpServlet;
+
+public class HomeController extends HttpServlet {
+
+	
+	private static final long serialVersionUID = -5019026564666488873L;
+
+}

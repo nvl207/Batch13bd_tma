@@ -1,0 +1,73 @@
+package com.manager.dao.impl;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.manager.dao.IKhachHangDAO;
+import com.manager.model.KhachHangModel;
+
+public class KhachHangDAO implements IKhachHangDAO {
+	public Connection getConnection() {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			String url = "jdbc:mySQL://localhost:3306/CHECK_PROJECT";
+			String user = "root";
+			String password = "123456";
+			return DriverManager.getConnection(url, user, password);
+
+		} catch (ClassNotFoundException | SQLException e) {
+			return null;
+		}
+
+	}
+
+	@Override
+	public List<KhachHangModel> findAll() {
+		List<KhachHangModel> results = new ArrayList<>();
+		String sql = "SELECT * FROM KHACHHANG;";
+		//open connection
+		Connection connection = getConnection();
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		if (connection != null) {
+			try {
+				
+				statement = connection.prepareStatement(sql);
+				resultSet = statement.executeQuery();
+				
+				while (resultSet.next()) {
+					KhachHangModel khachhang = new KhachHangModel();
+					khachhang.setMaKhachHang(resultSet.getInt("MaKhachHang"));
+					khachhang.setTenKhachHang(resultSet.getString("TenKhachHang"));
+					khachhang.setSoDienThoai(resultSet.getString("SoDienThoai"));
+					khachhang.setDiaChiEmail(resultSet.getString("DiaChiEmail"));
+					results.add(khachhang);	
+				}
+				return results;
+			} catch (SQLException e) {
+				return null;
+			} finally { // finally đảm bảo các kết nối luôn close
+				try {
+					if (connection != null) {
+						connection.close();
+					}
+					if (statement != null) {
+						statement.close();
+					}
+					if (resultSet != null) {
+						resultSet.close();
+					}
+				} catch (SQLException e) {
+					return null;
+				}
+				
+			}
+		}
+		return null;
+	}
+}

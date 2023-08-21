@@ -1,0 +1,32 @@
+package com.manager.model;
+
+public class user {
+private int makh;
+private String tenkh;
+public int getMakh() {
+	return makh;
+}
+public void setMakh(int makh) {
+	this.makh = makh;
+}
+public String getTenkh() {
+	return tenkh;
+}
+public void setTenkh(String tenkh) {
+	this.tenkh = tenkh;
+}
+public String getSdt() {
+	return sdt;
+}
+public void setSdt(String sdt) {
+	this.sdt = sdt;
+}
+public String getDiachiemail() {
+	return diachiemail;
+}
+public void setDiachiemail(String diachiemail) {
+	this.diachiemail = diachiemail;
+}
+private String sdt;
+private String diachiemail;
+}

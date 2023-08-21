@@ -1,0 +1,7 @@
+package com.manager.service.impl;
+
+import com.manager.service.IKhachHangService;
+
+public class KhachHangService implements IKhachHangService {
+
+}

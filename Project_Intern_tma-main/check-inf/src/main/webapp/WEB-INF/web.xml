@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+	
+	<display-name>check-inf</display-name>
+	
+	<listener>
+	<listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
+	</listener>
+	 
+	<welcome-file-list>  <!-- khi load trang web thi file index se load dau  -->
+	<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	
+
+	<session-config>
+		<tracking-mode>COOKIE</tracking-mode>
+	</session-config>
+	
+		<!-- checkin -->
+	
+	<servlet>
+    <servlet-name>check-in</servlet-name>
+    <jsp-file>/views/web/check-in.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>check-in</servlet-name>
+    <url-pattern>/check-inf/check-in</url-pattern>
+</servlet-mapping>
+ 
+ 	<!-- checkout -->
+		<servlet>
+    <servlet-name>check-out</servlet-name>
+    <jsp-file>/views/web/check-out.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>check-out</servlet-name>
+    <url-pattern>/check-inf/check-out</url-pattern>
+</servlet-mapping>
+
+ 	<!-- Filter -->
+	<servlet>
+    <servlet-name>Filter</servlet-name>
+    <jsp-file>/views/web/Filter.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>Filter</servlet-name>
+    <url-pattern>/check-inf/Filter.jsp</url-pattern>
+</servlet-mapping> 
+
+
+    
+ 
+</web-app>
+
+
+  

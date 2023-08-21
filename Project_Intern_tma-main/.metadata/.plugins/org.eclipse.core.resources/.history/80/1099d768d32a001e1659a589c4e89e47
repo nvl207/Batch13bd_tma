@@ -1,0 +1,277 @@
+package com.manager.dao.impl;
+
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+
+public class KhachHangDAO { implements DAOInterface<KhachHang> {
+
+	public static KhachHangDAO getInstance() {
+		return new KhachHangDAO();
+	}
+
+	@Override
+	public int insert(khachhang t) {
+		int ketqua = 0;
+		try {
+			//5 buoc
+			//b1: tao ket noi
+			
+			Connection con = jdbc.getConnection();
+			
+			//b2: tao doi tuong statement
+			//***** statement
+//			Statement st =   con.createStatement();
+//			
+//			//b3: thuc thi cau lenh sql (insert)
+//			
+//			String sql = "insert into khachhang(makhachhang , tenkhachhang , sodienthoai , diachiemail) "+
+//					 " values ("+t.getMakhachhang() +" , '"+t.getTenkhachhang() +"' , '"+t.getSodienthoai() +"' , '"+t.getDiachiemail() +"')";
+//		
+//		
+//		
+//		 ketqua = st.executeUpdate(sql);
+			
+			
+			
+			//**** preparedstatement
+			String sql = "insert into khachhang(makhachhang , tenkhachhang , sodienthoai , diachiemail) "+
+					 " values (? , ? , ? , ?)";
+			
+			PreparedStatement pst =   con.prepareStatement(sql);
+			
+			pst.setInt(1,t.getMakhachhang());
+			pst.setString(2, t.getTenkhachhang());
+			pst.setString(3, t.getSodienthoai());
+			pst.setString(4, t.getDiachiemail());
+		
+		//b4: 
+		System.out.println("Ban da thuc thi: " + sql);
+		System.out.println("co: " + ketqua + "dong bi thay doi");
+		
+		
+		//b5:ngat ket noi
+		jdbc.closeConnection(con);
+		
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ketqua;
+	}
+
+	@Override
+	public int update(khachhang t) {
+		int ketqua = 0;
+		try {
+			//5 buoc
+			//b1: tao ket noi
+			
+			Connection con = jdbc.getConnection();
+			
+			//b2: tao doi tuong statement
+			String sql = "update khachhang  "+
+					" set " + 
+					" tenkhachhang =?"+
+					", sodienthoai =?"+
+					", diachiemail =?"+
+					" where makhachhang= ?";
+			Statement st =   con.createStatement();
+			
+			//b3: thuc thi cau lenh sql (insert)
+			
+			
+		 
+		
+			System.out.println(sql);
+		 ketqua = st.executeUpdate(sql);
+		
+		//b4: 
+		System.out.println("Ban da thuc thi: " + sql);
+		System.out.println("co: " + ketqua + "dong bi thay doi");
+		
+		
+		//b5:ngat ket noi
+		jdbc.closeConnection(con);
+		
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ketqua;
+	}
+
+	@Override
+	public int delete(khachhang t) {
+		int ketqua = 0;
+		try {
+			//5 buoc
+			//b1: tao ket noi
+			
+			Connection con = jdbc.getConnection();
+			
+			//b2: tao doi tuong statement
+			Statement st =   con.createStatement();
+			
+			//b3: thuc thi cau lenh sql (insert)
+			
+			String sql = "delete from khachhang "+
+						" where makhachhang='" + t.getMakhachhang()+"'";
+		 
+		
+			System.out.println(sql);
+		 ketqua = st.executeUpdate(sql);
+		
+		//b4: 
+		System.out.println("Ban da thuc thi: " + sql);
+		System.out.println("co: " + ketqua + "dong bi thay doi");
+		
+		
+		//b5:ngat ket noi
+		jdbc.closeConnection(con);
+		
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ketqua;
+	}
+
+	@Override
+	public ArrayList<khachhang> selectAll() {
+		ArrayList<khachhang> ketqua = new ArrayList<khachhang>();
+		try {
+			//5 buoc
+			//b1: tao ket noi
+			
+			Connection con = jdbc.getConnection();
+			
+			//b2: tao doi tuong statement
+			Statement st =   con.createStatement();
+			
+			//b3: thuc thi cau lenh sql (insert)
+			
+			String sql = "select * from khachhang";
+		 
+		
+			System.out.println(sql);
+		 ResultSet rs = st.executeQuery(sql);
+		
+		//b4: 
+		while(rs.next()) {
+			int makhachhang = rs.getInt("makhachhang");
+			String tenkhachhang = rs.getString("tenkhachhang");
+			String sodienthoai = rs.getString("sodienthoai");
+			String diachiemail = rs.getString("diachiemail");
+			
+			khachhang khachhang = new khachhang(makhachhang, tenkhachhang, sodienthoai, diachiemail);
+			ketqua.add(khachhang);
+		}
+		
+		
+		//b5:ngat ket noi
+		jdbc.closeConnection(con);
+		
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ketqua;
+	}
+
+	@Override
+	public khachhang selectById(khachhang t) {
+		khachhang ketqua = null;
+		try {
+			//5 buoc
+			//b1: tao ket noi
+			
+			Connection con = jdbc.getConnection();
+			
+			//b2: tao doi tuong statement
+			Statement st =   con.createStatement();
+			
+			//b3: thuc thi cau lenh sql (insert)
+			
+			String sql = "select * from khachhang where makhachhang = '" + t.getMakhachhang()+"'";
+		 
+		
+			System.out.println(sql);
+		 ResultSet rs = st.executeQuery(sql);
+		
+		//b4: 
+		while(rs.next()) {
+			int makhachhang = rs.getInt("makhachhang");
+			String tenkhachhang = rs.getString("tenkhachhang");
+			String sodienthoai = rs.getString("sodienthoai");
+			String diachiemail = rs.getString("diachiemail");
+			
+			ketqua = new khachhang(makhachhang, tenkhachhang, sodienthoai, diachiemail);
+			
+		}
+		
+		
+		//b5:ngat ket noi
+		jdbc.closeConnection(con);
+		
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ketqua;
+	}
+
+	@Override
+	public ArrayList<khachhang> selectByCondition(String condition) {
+		ArrayList<khachhang> ketqua = new ArrayList<khachhang>();
+		try {
+			//5 buoc
+			//b1: tao ket noi
+			
+			Connection con = jdbc.getConnection();
+			
+			//b2: tao doi tuong statement
+			Statement st =   con.createStatement();
+			
+			//b3: thuc thi cau lenh sql (insert)
+			
+			String sql = "select * from khachhang where " + condition;
+		 
+		
+			System.out.println(sql);
+		 ResultSet rs = st.executeQuery(sql);
+		
+		//b4: 
+		while(rs.next()) {
+			int makhachhang = rs.getInt("makhachhang");
+			String tenkhachhang = rs.getString("tenkhachhang");
+			String sodienthoai = rs.getString("sodienthoai");
+			String diachiemail = rs.getString("diachiemail");
+			
+			khachhang khachhang = new khachhang(makhachhang, tenkhachhang, sodienthoai, diachiemail);
+			ketqua.add(khachhang);
+		}
+		
+		
+		//b5:ngat ket noi
+		jdbc.closeConnection(con);
+		
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ketqua;
+	}
+
+}

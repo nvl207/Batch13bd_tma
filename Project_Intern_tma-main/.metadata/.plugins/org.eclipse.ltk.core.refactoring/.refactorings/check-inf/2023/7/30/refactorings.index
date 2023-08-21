@@ -1,0 +1,17 @@
+1690222430093	Move 'views' to 'webapp'
+1690223750606	Delete element
+1690252143211	Delete element
+1690254948968	Rename resource 'check-in.html'
+1690254978215	Rename resource 'list_guest.html'
+1690255307993	Move 'list_guest.jsp' to 'web'
+1690255310275	Move 'check-in.jsp' to 'web'
+1690259689144	Delete element
+1690260403853	Delete element
+1690269587873	Delete element
+1690529391575	Rename type 'IKhachHangDAO'
+1690529418345	Rename type 'KhachHangDAO'
+1690529432646	Rename type 'KhachHangModel'
+1690529445035	Rename type 'PhongModel'
+1690529460768	Rename type 'ToaNhaModel'
+1690529476392	Rename type 'IKhachHangService'
+1690529581321	Rename type 'KhachHangService'
